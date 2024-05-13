@@ -128,6 +128,27 @@ exports.Prisma.UserScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.PostScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  prices: 'prices',
+  colors: 'colors',
+  memory: 'memory',
+  logos: 'logos',
+  brand: 'brand',
+  screenSize: 'screenSize',
+  CPU: 'CPU',
+  MainCamera: 'MainCamera',
+  FrontCamera: 'FrontCamera',
+  Battery: 'Battery',
+  description: 'description',
+  screenResolution: 'screenResolution',
+  screenType: 'screenType',
+  pixelDebcity: 'pixelDebcity',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -145,7 +166,8 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  Post: 'Post'
 };
 
 /**

@@ -2,6 +2,11 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+enum Brand {
+  APPLE
+  SAMSUNG
+}
+
 input CreateUserInput {
   email: String!
   password: String!
@@ -13,12 +18,58 @@ input LogInUserInput {
   password: String!
 }
 
+type LogOut {
+  message: String!
+}
+
 type Mutation {
+  createPost(input: PostInput!): Post!
+  logOut: LogOut!
   signIn(input: LogInUserInput!): User!
   signUp(input: CreateUserInput!): User!
 }
 
+type Post {
+  Battery: Int!
+  CPU: String!
+  FrontCamera: String!
+  MainCamera: String!
+  brand: Brand!
+  colors: [String!]!
+  description: String!
+  id: String!
+  logos: [String!]!
+  memory: [Int!]!
+  pixelDebcity: String!
+  prices: [Int!]!
+  screenResolution: String!
+  screenSize: String!
+  screenType: String!
+  title: String!
+}
+
+input PostInput {
+  Battery: Int!
+  CPU: String!
+  FrontCamera: String!
+  MainCamera: String!
+  brand: String!
+  colors: [String!]!
+  description: String!
+  logos: [String!]!
+  memory: [Int!]!
+  pixelDebcity: String!
+  prices: [Int!]!
+  screenResolution: String!
+  screenSize: String!
+  screenType: String!
+  title: String!
+}
+
 type Query {
+  getAll: [Post!]!
+  getOne(id: String!): Post!
+  getProfile: User!
   getUser: User!
 }
 

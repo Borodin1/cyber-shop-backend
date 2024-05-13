@@ -1,0 +1,232 @@
+//!APPLE
+// [
+//     {
+//         "input": {
+//             "title": "Apple iPhone 14 Pro Max",
+//             "prices": [
+//                 1399,
+//                 1499
+//             ],
+//             "colors": [
+//                 "#000",
+//                 "#8000FF",
+//                 "#FF0000",
+//                 "#FFFF00",
+//                 "#fff"
+//             ],
+//             "memory": [
+//                 128,
+//                 256,
+//                 512,
+//                 1
+//             ],
+//             "logos": [
+//                 "https://i.allo.ua/media/catalog/product/cache/1/image/710x600/602f0fa2c1f0d1ba5e241f914e856ff9/w/w/wwen_iphone14pro_q422_deep-purple_pdp-images_position-1a_7.jpg",
+//                 "https://i.allo.ua/media/catalog/product/cache/1/image/710x600/602f0fa2c1f0d1ba5e241f914e856ff9/w/w/wwen_iphone14pro_q422_deep-purple_pdp-images_position-1b_7.jpg",
+//                 "https://i.allo.ua/media/catalog/product/cache/1/image/710x600/602f0fa2c1f0d1ba5e241f914e856ff9/i/p/iphone-14-pro-finish-select-202209-6-1inch-deeppurple_av1_geo_us.jpg",
+//                 "https://i.allo.ua/media/catalog/product/cache/1/image/710x600/602f0fa2c1f0d1ba5e241f914e856ff9/w/w/wwen_iphone14pro_q422_deep-purple_pdp-images_position-2_7.jpg"
+//             ],
+//             "brand": "APPLE",
+//             "screenSize": "6.7",
+//             "CPU": "Apple A16 Bionic",
+//             "MainCamera": "48-12-12 MP",
+//             "FrontCamera": "12 MP",
+//             "Battery": 4323,
+//             "description": "Enhanced capabilities thanks toan enlarged display of 6.7 inchesand work without rechargingthroughout the day. Incredible photosas in weak, yesand in bright lightusing the new systemwith two cameras more...",
+//             "screenResolution": "2796x1290",
+//             "screenType": "OLED",
+//             "pixelDebcity": "460 ppi"
+//         }
+//     },
+//     {
+//         "input": {
+//             "title": "Apple iPhone 14 Pro 512GB Gold (MQ233)",
+//             "prices": [
+//                 1437
+//             ],
+//             "colors": [
+//                 "#000",
+//                 "#8000FF",
+//                 "#FF0000",
+//                 "#FFFF00",
+//                 "#fff"
+//             ],
+//             "memory": [
+//                 128,
+//                 256,
+//                 512,
+//                 1
+//             ],
+//             "logos": [
+//                 "https://i.allo.ua/media/catalog/product/cache/1/image/710x600/602f0fa2c1f0d1ba5e241f914e856ff9/w/w/wwen_iphone14pro_q422_gold_pdp-images_position-1a_7.jpg",
+//                 "https://i.allo.ua/media/catalog/product/cache/1/image/710x600/602f0fa2c1f0d1ba5e241f914e856ff9/w/w/wwen_iphone14pro_q422_gold_pdp-images_position-1b_7.jpg",
+//                 "https://i.allo.ua/media/catalog/product/cache/1/image/710x600/602f0fa2c1f0d1ba5e241f914e856ff9/i/p/iphone-14-pro-finish-select-202209-6-1inch-gold_av1_geo_us.jpg",
+//                 "https://i.allo.ua/media/catalog/product/cache/1/image/710x600/602f0fa2c1f0d1ba5e241f914e856ff9/w/w/wwen_iphone14pro_q422_gold_pdp-images_position-2_7.jpg"
+//             ],
+//             "brand": "APPLE",
+//             "screenSize": "6.7",
+//             "CPU": "Apple A16 Bionic",
+//             "MainCamera": "48-12-12 MP",
+//             "FrontCamera": "12 MP",
+//             "Battery": 4323,
+//             "description": "Enhanced capabilities thanks toan enlarged display of 6.7 inchesand work without rechargingthroughout the day. Incredible photosas in weak, yesand in bright lightusing the new systemwith two cameras more...",
+//             "screenResolution": "2796x1290",
+//             "screenType": "OLED",
+//             "pixelDebcity": "460 ppi"
+//         }
+//     },
+//     {
+//         "input": {
+//             "title": "Apple iPhone 14 Pro 512GB Silver (MQ233)",
+//             "prices": [
+//                 1213,
+//                 1492
+//             ],
+//             "colors": [
+//                 "#000",
+//                 "#8000FF",
+//                 "#FF0000",
+//                 "#FFFF00",
+//                 "#fff"
+//             ],
+//             "memory": [
+//                 128,
+//                 256,
+//                 512,
+//                 1
+//             ],
+//             "logos": [
+//                 "https://i.allo.ua/media/catalog/product/cache/1/image/710x600/602f0fa2c1f0d1ba5e241f914e856ff9/w/w/wwen_iphone14pro_q422_silver_pdp-images_position-1a_6.jpg",
+//                 "https://i.allo.ua/media/catalog/product/cache/1/image/710x600/602f0fa2c1f0d1ba5e241f914e856ff9/w/w/wwen_iphone14pro_q422_silver_pdp-images_position-1b_6.jpg",
+//                 "https://i.allo.ua/media/catalog/product/cache/1/image/710x600/602f0fa2c1f0d1ba5e241f914e856ff9/w/w/wwen_iphone14pro_q422_silver_pdp-images_position-2_6.jpg",
+//                 "https://i.allo.ua/media/catalog/product/cache/1/image/710x600/602f0fa2c1f0d1ba5e241f914e856ff9/i/p/iphone-14-pro-finish-select-202209-6-1inch-silver_av1_geo_us_1.jpg"
+//             ],
+//             "brand": "APPLE",
+//             "screenSize": "6.7",
+//             "CPU": "Apple A16 Bionic",
+//             "MainCamera": "48-12-12 MP",
+//             "FrontCamera": "12 MP",
+//             "Battery": 4323,
+//             "description": "Enhanced capabilities thanks toan enlarged display of 6.7 inchesand work without rechargingthroughout the day. Incredible photosas in weak, yesand in bright lightusing the new systemwith two cameras more...",
+//             "screenResolution": "2796x1290",
+//             "screenType": "OLED",
+//             "pixelDebcity": "460 ppi"
+//         }
+//     },
+//     {
+//         "input": {
+//             "title": "Apple iPhone 14 Pro 512GB Black (MQ233)",
+//             "prices": [
+//                 1437
+//             ],
+//             "colors": [
+//                 "#000",
+//                 "#8000FF",
+//                 "#FF0000",
+//                 "#FFFF00",
+//                 "#fff"
+//             ],
+//             "memory": [
+//                 128,
+//                 256,
+//                 512,
+//                 1
+//             ],
+//             "logos": [
+//                 "https://i.allo.ua/media/catalog/product/cache/1/image/710x600/602f0fa2c1f0d1ba5e241f914e856ff9/w/w/wwen_iphone14pro_q422_space-black_pdp-images_position-1a_7.jpg",
+//                 "https://i.allo.ua/media/catalog/product/cache/1/image/710x600/602f0fa2c1f0d1ba5e241f914e856ff9/w/w/wwen_iphone14pro_q422_space-black_pdp-images_position-1b_7.jpg",
+//                 "https://i.allo.ua/media/catalog/product/cache/1/image/710x600/602f0fa2c1f0d1ba5e241f914e856ff9/i/p/iphone-14-pro-finish-select-202209-6-1inch-spaceblack_av1_geo_us.jpg",
+//                 "https://i.allo.ua/media/catalog/product/cache/1/image/710x600/602f0fa2c1f0d1ba5e241f914e856ff9/w/w/wwen_iphone14pro_q422_space-black_pdp-images_position-2_7.jpg"
+//             ],
+//             "brand": "APPLE",
+//             "screenSize": "6.7",
+//             "CPU": "Apple A16 Bionic",
+//             "MainCamera": "48-12-12 MP",
+//             "FrontCamera": "12 MP",
+//             "Battery": 4323,
+//             "description": "Enhanced capabilities thanks toan enlarged display of 6.7 inchesand work without rechargingthroughout the day. Incredible photosas in weak, yesand in bright lightusing the new systemwith two cameras more...",
+//             "screenResolution": "2796x1290",
+//             "screenType": "OLED",
+//             "pixelDebcity": "460 ppi"
+//         }
+//     }
+// ]
+
+[
+    {
+        "input": {
+            "title": "Apple iPhone 13 mini 128GB Pink (MLK23)",
+            "prices": [
+                 850,
+                 1233
+            ],
+            "colors": [
+                "#000",
+                "#8000FF",
+                "#FF0000",
+                "#FFFF00",
+                "#fff"
+            ],
+            "memory": [
+                128,
+                256,
+                512,
+                1
+            ],
+            "logos": [
+                "https://i.allo.ua/media/catalog/product/cache/1/image/710x600/602f0fa2c1f0d1ba5e241f914e856ff9/import/4488372616342292.jpg",
+                "https://i.allo.ua/media/catalog/product/cache/1/image/710x600/602f0fa2c1f0d1ba5e241f914e856ff9/i/p/iphone_13_mini_q421_pink_pdp_image_position-1b__ww-ru_1_2.jpg",
+                "https://i.allo.ua/media/catalog/product/cache/1/image/710x600/602f0fa2c1f0d1ba5e241f914e856ff9/i/p/iphone-13-mini-pink-witb-2021_wid_328_hei_784_fmt__2.jpg",
+                "https://i.allo.ua/media/catalog/product/cache/1/image/710x600/602f0fa2c1f0d1ba5e241f914e856ff9/i/p/iphone_13_mini_q421_pink_pdp_image_position-2__ww-ru_1_2.jpg"
+            ],
+            "brand": "APPLE",
+            "screenSize": "6.7",
+            "CPU": "Apple A16 Bionic",
+            "MainCamera": "48-12-12 MP",
+            "FrontCamera": "12 MP",
+            "Battery": 4323,
+            "description": "Enhanced capabilities thanks toan enlarged display of 6.7 inchesand work without rechargingthroughout the day. Incredible photosas in weak, yesand in bright lightusing the new systemwith two cameras more...",
+            "screenResolution": "2796x1290",
+            "screenType": "OLED",
+            "pixelDebcity": "460 ppi"
+        }
+    },
+    {
+        "input": {
+            "title": "Apple iPhone 11 128GB White (MQ233)",
+            "prices": [
+                 850,
+                 1233
+            ],
+            "colors": [
+                "#000",
+                "#8000FF",
+                "#FF0000",
+                "#FFFF00",
+                "#fff"
+            ],
+            "memory": [
+                128,
+                256,
+                512,
+                1
+            ],
+            "logos": [
+                "https://i.allo.ua/media/catalog/product/cache/1/image/710x600/602f0fa2c1f0d1ba5e241f914e856ff9/a/3/a39271a1fa79d0d731264afe5af9374d__2.jpg",
+                "https://i.allo.ua/media/catalog/product/cache/1/image/710x600/602f0fa2c1f0d1ba5e241f914e856ff9/a/3/a39271a1fa79d0d731264afe5af9374d_2.jpg",
+                "https://i.allo.ua/media/catalog/product/cache/1/image/710x600/602f0fa2c1f0d1ba5e241f914e856ff9/d/1/d17a70ec380686d2dd123c7684b9335e_2.jpg",
+                "https://i.allo.ua/media/catalog/product/cache/1/image/710x600/602f0fa2c1f0d1ba5e241f914e856ff9/d/1/d17a70ec380686d2dd123c7684b9335e__2.jpg"
+            ],
+            "brand": "APPLE",
+            "screenSize": "6.7",
+            "CPU": "Apple A16 Bionic",
+            "MainCamera": "48-12-12 MP",
+            "FrontCamera": "12 MP",
+            "Battery": 4323,
+            "description": "Enhanced capabilities thanks toan enlarged display of 6.7 inchesand work without rechargingthroughout the day. Incredible photosas in weak, yesand in bright lightusing the new systemwith two cameras more...",
+            "screenResolution": "2796x1290",
+            "screenType": "OLED",
+            "pixelDebcity": "460 ppi"
+        }
+    }
+]

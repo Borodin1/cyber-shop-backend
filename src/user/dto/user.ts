@@ -23,3 +23,9 @@ export class User {
   @Field(type => String)
   accessToken: string
 }
+
+@ObjectType()
+export class LogOut {
+  @Field(type => String)
+  message: string
+}

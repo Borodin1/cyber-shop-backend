@@ -18,6 +18,11 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  * 
  */
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
+/**
+ * Model Post
+ * 
+ */
+export type Post = $Result.DefaultSelection<Prisma.$PostPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -150,6 +155,16 @@ export class PrismaClient<
     * ```
     */
   get user(): Prisma.UserDelegate<ExtArgs>;
+
+  /**
+   * `prisma.post`: Exposes CRUD operations for the **Post** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Posts
+    * const posts = await prisma.post.findMany()
+    * ```
+    */
+  get post(): Prisma.PostDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -627,7 +642,8 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    User: 'User'
+    User: 'User',
+    Post: 'Post'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -644,7 +660,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'user'
+      modelProps: 'user' | 'post'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -711,6 +727,72 @@ export namespace Prisma {
           count: {
             args: Prisma.UserCountArgs<ExtArgs>,
             result: $Utils.Optional<UserCountAggregateOutputType> | number
+          }
+        }
+      }
+      Post: {
+        payload: Prisma.$PostPayload<ExtArgs>
+        fields: Prisma.PostFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PostFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PostPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PostFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PostPayload>
+          }
+          findFirst: {
+            args: Prisma.PostFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PostPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PostFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PostPayload>
+          }
+          findMany: {
+            args: Prisma.PostFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PostPayload>[]
+          }
+          create: {
+            args: Prisma.PostCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PostPayload>
+          }
+          createMany: {
+            args: Prisma.PostCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.PostDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PostPayload>
+          }
+          update: {
+            args: Prisma.PostUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PostPayload>
+          }
+          deleteMany: {
+            args: Prisma.PostDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PostUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.PostUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PostPayload>
+          }
+          aggregate: {
+            args: Prisma.PostAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregatePost>
+          }
+          groupBy: {
+            args: Prisma.PostGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<PostGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PostCountArgs<ExtArgs>,
+            result: $Utils.Optional<PostCountAggregateOutputType> | number
           }
         }
       }
@@ -1742,6 +1824,1032 @@ export namespace Prisma {
 
 
   /**
+   * Model Post
+   */
+
+  export type AggregatePost = {
+    _count: PostCountAggregateOutputType | null
+    _avg: PostAvgAggregateOutputType | null
+    _sum: PostSumAggregateOutputType | null
+    _min: PostMinAggregateOutputType | null
+    _max: PostMaxAggregateOutputType | null
+  }
+
+  export type PostAvgAggregateOutputType = {
+    prices: number | null
+    memory: number | null
+    Battery: number | null
+  }
+
+  export type PostSumAggregateOutputType = {
+    prices: number[]
+    memory: number[]
+    Battery: number | null
+  }
+
+  export type PostMinAggregateOutputType = {
+    id: string | null
+    title: string | null
+    brand: string | null
+    screenSize: string | null
+    CPU: string | null
+    MainCamera: string | null
+    FrontCamera: string | null
+    Battery: number | null
+    description: string | null
+    screenResolution: string | null
+    screenType: string | null
+    pixelDebcity: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PostMaxAggregateOutputType = {
+    id: string | null
+    title: string | null
+    brand: string | null
+    screenSize: string | null
+    CPU: string | null
+    MainCamera: string | null
+    FrontCamera: string | null
+    Battery: number | null
+    description: string | null
+    screenResolution: string | null
+    screenType: string | null
+    pixelDebcity: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type PostCountAggregateOutputType = {
+    id: number
+    title: number
+    prices: number
+    colors: number
+    memory: number
+    logos: number
+    brand: number
+    screenSize: number
+    CPU: number
+    MainCamera: number
+    FrontCamera: number
+    Battery: number
+    description: number
+    screenResolution: number
+    screenType: number
+    pixelDebcity: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type PostAvgAggregateInputType = {
+    prices?: true
+    memory?: true
+    Battery?: true
+  }
+
+  export type PostSumAggregateInputType = {
+    prices?: true
+    memory?: true
+    Battery?: true
+  }
+
+  export type PostMinAggregateInputType = {
+    id?: true
+    title?: true
+    brand?: true
+    screenSize?: true
+    CPU?: true
+    MainCamera?: true
+    FrontCamera?: true
+    Battery?: true
+    description?: true
+    screenResolution?: true
+    screenType?: true
+    pixelDebcity?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PostMaxAggregateInputType = {
+    id?: true
+    title?: true
+    brand?: true
+    screenSize?: true
+    CPU?: true
+    MainCamera?: true
+    FrontCamera?: true
+    Battery?: true
+    description?: true
+    screenResolution?: true
+    screenType?: true
+    pixelDebcity?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type PostCountAggregateInputType = {
+    id?: true
+    title?: true
+    prices?: true
+    colors?: true
+    memory?: true
+    logos?: true
+    brand?: true
+    screenSize?: true
+    CPU?: true
+    MainCamera?: true
+    FrontCamera?: true
+    Battery?: true
+    description?: true
+    screenResolution?: true
+    screenType?: true
+    pixelDebcity?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type PostAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Post to aggregate.
+     */
+    where?: PostWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Posts to fetch.
+     */
+    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PostWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Posts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Posts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Posts
+    **/
+    _count?: true | PostCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PostAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PostSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PostMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PostMaxAggregateInputType
+  }
+
+  export type GetPostAggregateType<T extends PostAggregateArgs> = {
+        [P in keyof T & keyof AggregatePost]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePost[P]>
+      : GetScalarType<T[P], AggregatePost[P]>
+  }
+
+
+
+
+  export type PostGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PostWhereInput
+    orderBy?: PostOrderByWithAggregationInput | PostOrderByWithAggregationInput[]
+    by: PostScalarFieldEnum[] | PostScalarFieldEnum
+    having?: PostScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PostCountAggregateInputType | true
+    _avg?: PostAvgAggregateInputType
+    _sum?: PostSumAggregateInputType
+    _min?: PostMinAggregateInputType
+    _max?: PostMaxAggregateInputType
+  }
+
+  export type PostGroupByOutputType = {
+    id: string
+    title: string
+    prices: number[]
+    colors: string[]
+    memory: number[]
+    logos: string[]
+    brand: string
+    screenSize: string
+    CPU: string
+    MainCamera: string
+    FrontCamera: string
+    Battery: number
+    description: string
+    screenResolution: string
+    screenType: string
+    pixelDebcity: string
+    createdAt: Date | null
+    updatedAt: Date | null
+    _count: PostCountAggregateOutputType | null
+    _avg: PostAvgAggregateOutputType | null
+    _sum: PostSumAggregateOutputType | null
+    _min: PostMinAggregateOutputType | null
+    _max: PostMaxAggregateOutputType | null
+  }
+
+  type GetPostGroupByPayload<T extends PostGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PostGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PostGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PostGroupByOutputType[P]>
+            : GetScalarType<T[P], PostGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PostSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    prices?: boolean
+    colors?: boolean
+    memory?: boolean
+    logos?: boolean
+    brand?: boolean
+    screenSize?: boolean
+    CPU?: boolean
+    MainCamera?: boolean
+    FrontCamera?: boolean
+    Battery?: boolean
+    description?: boolean
+    screenResolution?: boolean
+    screenType?: boolean
+    pixelDebcity?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["post"]>
+
+  export type PostSelectScalar = {
+    id?: boolean
+    title?: boolean
+    prices?: boolean
+    colors?: boolean
+    memory?: boolean
+    logos?: boolean
+    brand?: boolean
+    screenSize?: boolean
+    CPU?: boolean
+    MainCamera?: boolean
+    FrontCamera?: boolean
+    Battery?: boolean
+    description?: boolean
+    screenResolution?: boolean
+    screenType?: boolean
+    pixelDebcity?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+
+
+  export type $PostPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Post"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      title: string
+      prices: number[]
+      colors: string[]
+      memory: number[]
+      logos: string[]
+      brand: string
+      screenSize: string
+      CPU: string
+      MainCamera: string
+      FrontCamera: string
+      Battery: number
+      description: string
+      screenResolution: string
+      screenType: string
+      pixelDebcity: string
+      createdAt: Date | null
+      updatedAt: Date | null
+    }, ExtArgs["result"]["post"]>
+    composites: {}
+  }
+
+
+  type PostGetPayload<S extends boolean | null | undefined | PostDefaultArgs> = $Result.GetResult<Prisma.$PostPayload, S>
+
+  type PostCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<PostFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: PostCountAggregateInputType | true
+    }
+
+  export interface PostDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Post'], meta: { name: 'Post' } }
+    /**
+     * Find zero or one Post that matches the filter.
+     * @param {PostFindUniqueArgs} args - Arguments to find a Post
+     * @example
+     * // Get one Post
+     * const post = await prisma.post.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends PostFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, PostFindUniqueArgs<ExtArgs>>
+    ): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Post that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {PostFindUniqueOrThrowArgs} args - Arguments to find a Post
+     * @example
+     * // Get one Post
+     * const post = await prisma.post.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends PostFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, PostFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Post that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PostFindFirstArgs} args - Arguments to find a Post
+     * @example
+     * // Get one Post
+     * const post = await prisma.post.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends PostFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, PostFindFirstArgs<ExtArgs>>
+    ): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Post that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PostFindFirstOrThrowArgs} args - Arguments to find a Post
+     * @example
+     * // Get one Post
+     * const post = await prisma.post.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends PostFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, PostFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Posts that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PostFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Posts
+     * const posts = await prisma.post.findMany()
+     * 
+     * // Get first 10 Posts
+     * const posts = await prisma.post.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const postWithIdOnly = await prisma.post.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends PostFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, PostFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Post.
+     * @param {PostCreateArgs} args - Arguments to create a Post.
+     * @example
+     * // Create one Post
+     * const Post = await prisma.post.create({
+     *   data: {
+     *     // ... data to create a Post
+     *   }
+     * })
+     * 
+    **/
+    create<T extends PostCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, PostCreateArgs<ExtArgs>>
+    ): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Posts.
+     *     @param {PostCreateManyArgs} args - Arguments to create many Posts.
+     *     @example
+     *     // Create many Posts
+     *     const post = await prisma.post.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends PostCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, PostCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Post.
+     * @param {PostDeleteArgs} args - Arguments to delete one Post.
+     * @example
+     * // Delete one Post
+     * const Post = await prisma.post.delete({
+     *   where: {
+     *     // ... filter to delete one Post
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends PostDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, PostDeleteArgs<ExtArgs>>
+    ): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Post.
+     * @param {PostUpdateArgs} args - Arguments to update one Post.
+     * @example
+     * // Update one Post
+     * const post = await prisma.post.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends PostUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, PostUpdateArgs<ExtArgs>>
+    ): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Posts.
+     * @param {PostDeleteManyArgs} args - Arguments to filter Posts to delete.
+     * @example
+     * // Delete a few Posts
+     * const { count } = await prisma.post.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends PostDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, PostDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Posts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PostUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Posts
+     * const post = await prisma.post.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends PostUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, PostUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Post.
+     * @param {PostUpsertArgs} args - Arguments to update or create a Post.
+     * @example
+     * // Update or create a Post
+     * const post = await prisma.post.upsert({
+     *   create: {
+     *     // ... data to create a Post
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Post we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends PostUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, PostUpsertArgs<ExtArgs>>
+    ): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Posts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PostCountArgs} args - Arguments to filter Posts to count.
+     * @example
+     * // Count the number of Posts
+     * const count = await prisma.post.count({
+     *   where: {
+     *     // ... the filter for the Posts we want to count
+     *   }
+     * })
+    **/
+    count<T extends PostCountArgs>(
+      args?: Subset<T, PostCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PostCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Post.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PostAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PostAggregateArgs>(args: Subset<T, PostAggregateArgs>): Prisma.PrismaPromise<GetPostAggregateType<T>>
+
+    /**
+     * Group by Post.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PostGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PostGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PostGroupByArgs['orderBy'] }
+        : { orderBy?: PostGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PostGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPostGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Post model
+   */
+  readonly fields: PostFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Post.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PostClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the Post model
+   */ 
+  interface PostFieldRefs {
+    readonly id: FieldRef<"Post", 'String'>
+    readonly title: FieldRef<"Post", 'String'>
+    readonly prices: FieldRef<"Post", 'Int[]'>
+    readonly colors: FieldRef<"Post", 'String[]'>
+    readonly memory: FieldRef<"Post", 'Int[]'>
+    readonly logos: FieldRef<"Post", 'String[]'>
+    readonly brand: FieldRef<"Post", 'String'>
+    readonly screenSize: FieldRef<"Post", 'String'>
+    readonly CPU: FieldRef<"Post", 'String'>
+    readonly MainCamera: FieldRef<"Post", 'String'>
+    readonly FrontCamera: FieldRef<"Post", 'String'>
+    readonly Battery: FieldRef<"Post", 'Int'>
+    readonly description: FieldRef<"Post", 'String'>
+    readonly screenResolution: FieldRef<"Post", 'String'>
+    readonly screenType: FieldRef<"Post", 'String'>
+    readonly pixelDebcity: FieldRef<"Post", 'String'>
+    readonly createdAt: FieldRef<"Post", 'DateTime'>
+    readonly updatedAt: FieldRef<"Post", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Post findUnique
+   */
+  export type PostFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Post
+     */
+    select?: PostSelect<ExtArgs> | null
+    /**
+     * Filter, which Post to fetch.
+     */
+    where: PostWhereUniqueInput
+  }
+
+  /**
+   * Post findUniqueOrThrow
+   */
+  export type PostFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Post
+     */
+    select?: PostSelect<ExtArgs> | null
+    /**
+     * Filter, which Post to fetch.
+     */
+    where: PostWhereUniqueInput
+  }
+
+  /**
+   * Post findFirst
+   */
+  export type PostFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Post
+     */
+    select?: PostSelect<ExtArgs> | null
+    /**
+     * Filter, which Post to fetch.
+     */
+    where?: PostWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Posts to fetch.
+     */
+    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Posts.
+     */
+    cursor?: PostWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Posts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Posts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Posts.
+     */
+    distinct?: PostScalarFieldEnum | PostScalarFieldEnum[]
+  }
+
+  /**
+   * Post findFirstOrThrow
+   */
+  export type PostFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Post
+     */
+    select?: PostSelect<ExtArgs> | null
+    /**
+     * Filter, which Post to fetch.
+     */
+    where?: PostWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Posts to fetch.
+     */
+    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Posts.
+     */
+    cursor?: PostWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Posts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Posts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Posts.
+     */
+    distinct?: PostScalarFieldEnum | PostScalarFieldEnum[]
+  }
+
+  /**
+   * Post findMany
+   */
+  export type PostFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Post
+     */
+    select?: PostSelect<ExtArgs> | null
+    /**
+     * Filter, which Posts to fetch.
+     */
+    where?: PostWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Posts to fetch.
+     */
+    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Posts.
+     */
+    cursor?: PostWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Posts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Posts.
+     */
+    skip?: number
+    distinct?: PostScalarFieldEnum | PostScalarFieldEnum[]
+  }
+
+  /**
+   * Post create
+   */
+  export type PostCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Post
+     */
+    select?: PostSelect<ExtArgs> | null
+    /**
+     * The data needed to create a Post.
+     */
+    data: XOR<PostCreateInput, PostUncheckedCreateInput>
+  }
+
+  /**
+   * Post createMany
+   */
+  export type PostCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Posts.
+     */
+    data: PostCreateManyInput | PostCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Post update
+   */
+  export type PostUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Post
+     */
+    select?: PostSelect<ExtArgs> | null
+    /**
+     * The data needed to update a Post.
+     */
+    data: XOR<PostUpdateInput, PostUncheckedUpdateInput>
+    /**
+     * Choose, which Post to update.
+     */
+    where: PostWhereUniqueInput
+  }
+
+  /**
+   * Post updateMany
+   */
+  export type PostUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Posts.
+     */
+    data: XOR<PostUpdateManyMutationInput, PostUncheckedUpdateManyInput>
+    /**
+     * Filter which Posts to update
+     */
+    where?: PostWhereInput
+  }
+
+  /**
+   * Post upsert
+   */
+  export type PostUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Post
+     */
+    select?: PostSelect<ExtArgs> | null
+    /**
+     * The filter to search for the Post to update in case it exists.
+     */
+    where: PostWhereUniqueInput
+    /**
+     * In case the Post found by the `where` argument doesn't exist, create a new Post with this data.
+     */
+    create: XOR<PostCreateInput, PostUncheckedCreateInput>
+    /**
+     * In case the Post was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PostUpdateInput, PostUncheckedUpdateInput>
+  }
+
+  /**
+   * Post delete
+   */
+  export type PostDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Post
+     */
+    select?: PostSelect<ExtArgs> | null
+    /**
+     * Filter which Post to delete.
+     */
+    where: PostWhereUniqueInput
+  }
+
+  /**
+   * Post deleteMany
+   */
+  export type PostDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Posts to delete
+     */
+    where?: PostWhereInput
+  }
+
+  /**
+   * Post without action
+   */
+  export type PostDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Post
+     */
+    select?: PostSelect<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -1765,6 +2873,30 @@ export namespace Prisma {
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+  export const PostScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    prices: 'prices',
+    colors: 'colors',
+    memory: 'memory',
+    logos: 'logos',
+    brand: 'brand',
+    screenSize: 'screenSize',
+    CPU: 'CPU',
+    MainCamera: 'MainCamera',
+    FrontCamera: 'FrontCamera',
+    Battery: 'Battery',
+    description: 'description',
+    screenResolution: 'screenResolution',
+    screenType: 'screenType',
+    pixelDebcity: 'pixelDebcity',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type PostScalarFieldEnum = (typeof PostScalarFieldEnum)[keyof typeof PostScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -1825,6 +2957,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -1832,9 +2971,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Int[]'
+   * Reference to a field of type 'Float'
    */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
   /**
    * Deep Input Types
@@ -1898,6 +3044,125 @@ export namespace Prisma {
     updatedAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   }
 
+  export type PostWhereInput = {
+    AND?: PostWhereInput | PostWhereInput[]
+    OR?: PostWhereInput[]
+    NOT?: PostWhereInput | PostWhereInput[]
+    id?: StringFilter<"Post"> | string
+    title?: StringFilter<"Post"> | string
+    prices?: IntNullableListFilter<"Post">
+    colors?: StringNullableListFilter<"Post">
+    memory?: IntNullableListFilter<"Post">
+    logos?: StringNullableListFilter<"Post">
+    brand?: StringFilter<"Post"> | string
+    screenSize?: StringFilter<"Post"> | string
+    CPU?: StringFilter<"Post"> | string
+    MainCamera?: StringFilter<"Post"> | string
+    FrontCamera?: StringFilter<"Post"> | string
+    Battery?: IntFilter<"Post"> | number
+    description?: StringFilter<"Post"> | string
+    screenResolution?: StringFilter<"Post"> | string
+    screenType?: StringFilter<"Post"> | string
+    pixelDebcity?: StringFilter<"Post"> | string
+    createdAt?: DateTimeNullableFilter<"Post"> | Date | string | null
+    updatedAt?: DateTimeNullableFilter<"Post"> | Date | string | null
+  }
+
+  export type PostOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    prices?: SortOrder
+    colors?: SortOrder
+    memory?: SortOrder
+    logos?: SortOrder
+    brand?: SortOrder
+    screenSize?: SortOrder
+    CPU?: SortOrder
+    MainCamera?: SortOrder
+    FrontCamera?: SortOrder
+    Battery?: SortOrder
+    description?: SortOrder
+    screenResolution?: SortOrder
+    screenType?: SortOrder
+    pixelDebcity?: SortOrder
+    createdAt?: SortOrderInput | SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+  }
+
+  export type PostWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: PostWhereInput | PostWhereInput[]
+    OR?: PostWhereInput[]
+    NOT?: PostWhereInput | PostWhereInput[]
+    title?: StringFilter<"Post"> | string
+    prices?: IntNullableListFilter<"Post">
+    colors?: StringNullableListFilter<"Post">
+    memory?: IntNullableListFilter<"Post">
+    logos?: StringNullableListFilter<"Post">
+    brand?: StringFilter<"Post"> | string
+    screenSize?: StringFilter<"Post"> | string
+    CPU?: StringFilter<"Post"> | string
+    MainCamera?: StringFilter<"Post"> | string
+    FrontCamera?: StringFilter<"Post"> | string
+    Battery?: IntFilter<"Post"> | number
+    description?: StringFilter<"Post"> | string
+    screenResolution?: StringFilter<"Post"> | string
+    screenType?: StringFilter<"Post"> | string
+    pixelDebcity?: StringFilter<"Post"> | string
+    createdAt?: DateTimeNullableFilter<"Post"> | Date | string | null
+    updatedAt?: DateTimeNullableFilter<"Post"> | Date | string | null
+  }, "id">
+
+  export type PostOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    prices?: SortOrder
+    colors?: SortOrder
+    memory?: SortOrder
+    logos?: SortOrder
+    brand?: SortOrder
+    screenSize?: SortOrder
+    CPU?: SortOrder
+    MainCamera?: SortOrder
+    FrontCamera?: SortOrder
+    Battery?: SortOrder
+    description?: SortOrder
+    screenResolution?: SortOrder
+    screenType?: SortOrder
+    pixelDebcity?: SortOrder
+    createdAt?: SortOrderInput | SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    _count?: PostCountOrderByAggregateInput
+    _avg?: PostAvgOrderByAggregateInput
+    _max?: PostMaxOrderByAggregateInput
+    _min?: PostMinOrderByAggregateInput
+    _sum?: PostSumOrderByAggregateInput
+  }
+
+  export type PostScalarWhereWithAggregatesInput = {
+    AND?: PostScalarWhereWithAggregatesInput | PostScalarWhereWithAggregatesInput[]
+    OR?: PostScalarWhereWithAggregatesInput[]
+    NOT?: PostScalarWhereWithAggregatesInput | PostScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Post"> | string
+    title?: StringWithAggregatesFilter<"Post"> | string
+    prices?: IntNullableListFilter<"Post">
+    colors?: StringNullableListFilter<"Post">
+    memory?: IntNullableListFilter<"Post">
+    logos?: StringNullableListFilter<"Post">
+    brand?: StringWithAggregatesFilter<"Post"> | string
+    screenSize?: StringWithAggregatesFilter<"Post"> | string
+    CPU?: StringWithAggregatesFilter<"Post"> | string
+    MainCamera?: StringWithAggregatesFilter<"Post"> | string
+    FrontCamera?: StringWithAggregatesFilter<"Post"> | string
+    Battery?: IntWithAggregatesFilter<"Post"> | number
+    description?: StringWithAggregatesFilter<"Post"> | string
+    screenResolution?: StringWithAggregatesFilter<"Post"> | string
+    screenType?: StringWithAggregatesFilter<"Post"> | string
+    pixelDebcity?: StringWithAggregatesFilter<"Post"> | string
+    createdAt?: DateTimeNullableWithAggregatesFilter<"Post"> | Date | string | null
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"Post"> | Date | string | null
+  }
+
   export type UserCreateInput = {
     id?: string
     username?: string | null
@@ -1957,6 +3222,153 @@ export namespace Prisma {
     username?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type PostCreateInput = {
+    id?: string
+    title: string
+    prices?: PostCreatepricesInput | number[]
+    colors?: PostCreatecolorsInput | string[]
+    memory?: PostCreatememoryInput | number[]
+    logos?: PostCreatelogosInput | string[]
+    brand: string
+    screenSize: string
+    CPU: string
+    MainCamera: string
+    FrontCamera: string
+    Battery: number
+    description: string
+    screenResolution: string
+    screenType: string
+    pixelDebcity: string
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+  }
+
+  export type PostUncheckedCreateInput = {
+    id?: string
+    title: string
+    prices?: PostCreatepricesInput | number[]
+    colors?: PostCreatecolorsInput | string[]
+    memory?: PostCreatememoryInput | number[]
+    logos?: PostCreatelogosInput | string[]
+    brand: string
+    screenSize: string
+    CPU: string
+    MainCamera: string
+    FrontCamera: string
+    Battery: number
+    description: string
+    screenResolution: string
+    screenType: string
+    pixelDebcity: string
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+  }
+
+  export type PostUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    prices?: PostUpdatepricesInput | number[]
+    colors?: PostUpdatecolorsInput | string[]
+    memory?: PostUpdatememoryInput | number[]
+    logos?: PostUpdatelogosInput | string[]
+    brand?: StringFieldUpdateOperationsInput | string
+    screenSize?: StringFieldUpdateOperationsInput | string
+    CPU?: StringFieldUpdateOperationsInput | string
+    MainCamera?: StringFieldUpdateOperationsInput | string
+    FrontCamera?: StringFieldUpdateOperationsInput | string
+    Battery?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
+    screenResolution?: StringFieldUpdateOperationsInput | string
+    screenType?: StringFieldUpdateOperationsInput | string
+    pixelDebcity?: StringFieldUpdateOperationsInput | string
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type PostUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    prices?: PostUpdatepricesInput | number[]
+    colors?: PostUpdatecolorsInput | string[]
+    memory?: PostUpdatememoryInput | number[]
+    logos?: PostUpdatelogosInput | string[]
+    brand?: StringFieldUpdateOperationsInput | string
+    screenSize?: StringFieldUpdateOperationsInput | string
+    CPU?: StringFieldUpdateOperationsInput | string
+    MainCamera?: StringFieldUpdateOperationsInput | string
+    FrontCamera?: StringFieldUpdateOperationsInput | string
+    Battery?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
+    screenResolution?: StringFieldUpdateOperationsInput | string
+    screenType?: StringFieldUpdateOperationsInput | string
+    pixelDebcity?: StringFieldUpdateOperationsInput | string
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type PostCreateManyInput = {
+    id?: string
+    title: string
+    prices?: PostCreatepricesInput | number[]
+    colors?: PostCreatecolorsInput | string[]
+    memory?: PostCreatememoryInput | number[]
+    logos?: PostCreatelogosInput | string[]
+    brand: string
+    screenSize: string
+    CPU: string
+    MainCamera: string
+    FrontCamera: string
+    Battery: number
+    description: string
+    screenResolution: string
+    screenType: string
+    pixelDebcity: string
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
+  }
+
+  export type PostUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    prices?: PostUpdatepricesInput | number[]
+    colors?: PostUpdatecolorsInput | string[]
+    memory?: PostUpdatememoryInput | number[]
+    logos?: PostUpdatelogosInput | string[]
+    brand?: StringFieldUpdateOperationsInput | string
+    screenSize?: StringFieldUpdateOperationsInput | string
+    CPU?: StringFieldUpdateOperationsInput | string
+    MainCamera?: StringFieldUpdateOperationsInput | string
+    FrontCamera?: StringFieldUpdateOperationsInput | string
+    Battery?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
+    screenResolution?: StringFieldUpdateOperationsInput | string
+    screenType?: StringFieldUpdateOperationsInput | string
+    pixelDebcity?: StringFieldUpdateOperationsInput | string
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type PostUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    prices?: PostUpdatepricesInput | number[]
+    colors?: PostUpdatecolorsInput | string[]
+    memory?: PostUpdatememoryInput | number[]
+    logos?: PostUpdatelogosInput | string[]
+    brand?: StringFieldUpdateOperationsInput | string
+    screenSize?: StringFieldUpdateOperationsInput | string
+    CPU?: StringFieldUpdateOperationsInput | string
+    MainCamera?: StringFieldUpdateOperationsInput | string
+    FrontCamera?: StringFieldUpdateOperationsInput | string
+    Battery?: IntFieldUpdateOperationsInput | number
+    description?: StringFieldUpdateOperationsInput | string
+    screenResolution?: StringFieldUpdateOperationsInput | string
+    screenType?: StringFieldUpdateOperationsInput | string
+    pixelDebcity?: StringFieldUpdateOperationsInput | string
     createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -2084,6 +3496,116 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type IntNullableListFilter<$PrismaModel = never> = {
+    equals?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    has?: number | IntFieldRefInput<$PrismaModel> | null
+    hasEvery?: number[] | ListIntFieldRefInput<$PrismaModel>
+    hasSome?: number[] | ListIntFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type PostCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    prices?: SortOrder
+    colors?: SortOrder
+    memory?: SortOrder
+    logos?: SortOrder
+    brand?: SortOrder
+    screenSize?: SortOrder
+    CPU?: SortOrder
+    MainCamera?: SortOrder
+    FrontCamera?: SortOrder
+    Battery?: SortOrder
+    description?: SortOrder
+    screenResolution?: SortOrder
+    screenType?: SortOrder
+    pixelDebcity?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PostAvgOrderByAggregateInput = {
+    prices?: SortOrder
+    memory?: SortOrder
+    Battery?: SortOrder
+  }
+
+  export type PostMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    brand?: SortOrder
+    screenSize?: SortOrder
+    CPU?: SortOrder
+    MainCamera?: SortOrder
+    FrontCamera?: SortOrder
+    Battery?: SortOrder
+    description?: SortOrder
+    screenResolution?: SortOrder
+    screenType?: SortOrder
+    pixelDebcity?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PostMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    brand?: SortOrder
+    screenSize?: SortOrder
+    CPU?: SortOrder
+    MainCamera?: SortOrder
+    FrontCamera?: SortOrder
+    Battery?: SortOrder
+    description?: SortOrder
+    screenResolution?: SortOrder
+    screenType?: SortOrder
+    pixelDebcity?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type PostSumOrderByAggregateInput = {
+    prices?: SortOrder
+    memory?: SortOrder
+    Battery?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -2094,6 +3616,50 @@ export namespace Prisma {
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
     set?: Date | string | null
+  }
+
+  export type PostCreatepricesInput = {
+    set: number[]
+  }
+
+  export type PostCreatecolorsInput = {
+    set: string[]
+  }
+
+  export type PostCreatememoryInput = {
+    set: number[]
+  }
+
+  export type PostCreatelogosInput = {
+    set: string[]
+  }
+
+  export type PostUpdatepricesInput = {
+    set?: number[]
+    push?: number | number[]
+  }
+
+  export type PostUpdatecolorsInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type PostUpdatememoryInput = {
+    set?: number[]
+    push?: number | number[]
+  }
+
+  export type PostUpdatelogosInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -2205,6 +3771,33 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
 
 
   /**
@@ -2214,6 +3807,10 @@ export namespace Prisma {
      * @deprecated Use UserDefaultArgs instead
      */
     export type UserArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use PostDefaultArgs instead
+     */
+    export type PostArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = PostDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

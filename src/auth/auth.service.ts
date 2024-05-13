@@ -59,5 +59,10 @@ export class AuthService {
       maxAge: this.MAX_AGE,
     })
   }
+  async removeTokenInCookie(res: Response) {
+    res.cookie(this.TOKEN, '', {
+      maxAge: new Date().getDate(),
+    })
+  }
 
 }

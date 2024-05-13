@@ -5,6 +5,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { PrismaModule } from './prisma/prisma.module';
 import { UserModule } from './user/user.module';
 import { ConfigModule } from '@nestjs/config'
+import { PostModule } from './post/post.module';
 
 @Module({
   imports: [AuthModule, UserModule, ConfigModule.forRoot({ isGlobal: true }),
@@ -15,6 +16,7 @@ import { ConfigModule } from '@nestjs/config'
       context: ({ req, res }) => ({ req, res })
     }),
     PrismaModule,
+    PostModule,
   ],
   controllers: [],
   providers: [],

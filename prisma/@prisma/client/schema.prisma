@@ -19,3 +19,25 @@ model User {
 
   @@map("user")
 }
+
+model Post {
+  id               String    @id @default(uuid())
+  title            String
+  prices           Int[]
+  colors           String[]
+  memory           Int[]
+  logos            String[]
+  brand            String
+  screenSize       String    @map("screen_size")
+  CPU              String    @map("cpu")
+  MainCamera       String    @map("main_camera")
+  FrontCamera      String    @map("front_camera")
+  Battery          Int       @map("battery")
+  description      String
+  screenResolution String    @map("screen_resolution")
+  screenType       String    @map("screen_type")
+  pixelDebcity     String    @map("pixel_dencity")
+  
+  createdAt        DateTime? @default(now()) @map("created_at")
+  updatedAt        DateTime? @updatedAt @map("updated_at")
+}

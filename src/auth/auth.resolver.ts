@@ -4,7 +4,8 @@ import { User } from 'src/user/dto/user';
 import { CreateUserInput, LogInUserInput } from 'src/user/dto/user.input';
 import { UseGuards } from '@nestjs/common';
 import { LocalAuthGuard } from './guards/local.auth.guard';
-import { Request, Response } from 'express';
+import { Response } from 'express';
+import { CurrentUser } from './decorators/user.decorator';
 
 @Resolver(() => User)
 export class AuthResolver {
@@ -12,7 +13,7 @@ export class AuthResolver {
 
   @Query(returns => User)
   async getUser(
-  ) {}
+  ) { }
 
   @Mutation(returns => User)
   async signUp(
@@ -29,9 +30,9 @@ export class AuthResolver {
   async signIn(
     @Args('input') input: LogInUserInput,
     @Context('res') res: Response,
-    @Context('req') req: Request
+    @CurrentUser() userId: string
   ) {
-    const { refreshToken, ...user } = await this.authService.login(req.user as string)
+    const { refreshToken, ...user } = await this.authService.login(userId)
     this.authService.addTokenInCookie(res, refreshToken)
     return user
   }

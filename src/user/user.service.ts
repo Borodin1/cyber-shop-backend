@@ -23,4 +23,9 @@ export class UserService {
   async findById(id: string) {
     return await this.prisma.user.findFirst({ where: { id } })
   }
+  async logOut(id: string) {
+    await this.prisma.user.delete({ where: { id } })
+
+    return { message: 'You are log-out!!' }
+  }
 }
