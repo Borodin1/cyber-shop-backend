@@ -1,5 +1,5 @@
-import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
 import * as argon from 'argon2'
+import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { UserService } from 'src/user/user.service';
 import { CreateUserInput } from 'src/user/dto/user.input';
 import { JwtService } from '@nestjs/jwt';
@@ -8,7 +8,7 @@ import { Response } from 'express';
 @Injectable()
 export class AuthService {
   TOKEN = 'refreshToken'
-  MAX_AGE=7 * 24 * 60 * 60 * 1000
+  MAX_AGE = 7 * 24 * 60 * 60 * 1000
 
 
   constructor(
@@ -31,6 +31,12 @@ export class AuthService {
     if (exist) throw new BadRequestException("user exist")
     const newPass = await argon.hash(input.password)
     const user = await this.userService.create(input, newPass)
+    const tokens = await this.createJwt(user.id)
+    return { ...user, ...tokens }
+  }
+  async login(userId: string) {
+    const user = await this.userService.findById(userId)
+    if (!user) throw new BadRequestException("user not exist")
     const tokens = await this.createJwt(user.id)
     return { ...user, ...tokens }
   }

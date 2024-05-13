@@ -22,8 +22,4 @@ export class User {
 
   @Field(type => String)
   accessToken: string
-
-  @Field(type => String)
-  refreshToken: string
-
 }

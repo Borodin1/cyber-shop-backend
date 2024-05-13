@@ -9,11 +9,11 @@ import { ConfigModule } from '@nestjs/config'
 @Module({
   imports: [AuthModule, UserModule, ConfigModule.forRoot({ isGlobal: true }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
-    driver: ApolloDriver,
-    autoSchemaFile: 'src/schema.gql',
-    sortSchema: true,
-
-  }),
+      driver: ApolloDriver,
+      autoSchemaFile: 'src/schema.gql',
+      sortSchema: true,
+      context: ({ req, res }) => ({ req, res })
+    }),
     PrismaModule,
   ],
   controllers: [],

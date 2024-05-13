@@ -12,3 +12,13 @@ export class CreateUserInput {
   password: string
   
 }
+@InputType()
+export class LogInUserInput {
+  
+  @Field()
+  email: string
+  
+  @Field()
+  password: string
+  
+}
