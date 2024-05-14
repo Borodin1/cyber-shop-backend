@@ -1,10 +1,10 @@
-import { Resolver, Query, Mutation, Context, } from '@nestjs/graphql';
-import { LogOut, User } from './dto/user';
+import { Resolver, Query, Mutation, Context, Args, } from '@nestjs/graphql';
+import { BasketRespopnse, LogOut, User } from './dto/user';
 import { CurrentUser } from 'src/auth/decorators/user.decorator';
-import { UseGuards } from '@nestjs/common';
+import { Param, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/auth/guards/jwt.auth.guard';
 import { AuthService } from 'src/auth/auth.service';
-import { Response } from 'express';
+import { Request, Response } from 'express';
 import { UserService } from './user.service';
 
 @Resolver(() => User)
@@ -18,7 +18,9 @@ export class UserResolver {
   @UseGuards(JwtAuthGuard)
   async getProfile(
     @CurrentUser() user: User
-  ) {
+  ) {    
+    console.log(user)
+    
     return user
   }
 
@@ -28,8 +30,20 @@ export class UserResolver {
     @CurrentUser() user: User,
     @Context('res') res: Response
   ) {
-    const { message } = await this.userService.logOut(user.id)
+    const  message = await this.userService.logOut(user.id)
     this.authService.removeTokenInCookie(res)
+    console.log(message);
+    
     return message
+  }
+
+  @Mutation(returns => BasketRespopnse)
+  @UseGuards(JwtAuthGuard)
+  async add(
+    @CurrentUser() user: User,
+    @Args('postId') postId: string
+  ) {
+    const data = await this.userService.addInBasket(postId, user.id)
+    return data
   }
 }

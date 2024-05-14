@@ -2,6 +2,14 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type BasketRespopnse {
+  post: Post!
+  postId: String!
+  quantity: Float!
+  user: User!
+  userId: String!
+}
+
 enum Brand {
   APPLE
   SAMSUNG
@@ -11,6 +19,19 @@ input CreateUserInput {
   email: String!
   password: String!
   username: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Item {
+  id: String!
+  post: Post!
+  postId: String!
+  quantity: Float!
+  userId: String!
 }
 
 input LogInUserInput {
@@ -23,6 +44,7 @@ type LogOut {
 }
 
 type Mutation {
+  add(postId: String!): BasketRespopnse!
   createPost(input: PostInput!): Post!
   logOut: LogOut!
   signIn(input: LogInUserInput!): User!
@@ -75,10 +97,11 @@ type Query {
 
 type User {
   accessToken: String!
-  createdAt: String
+  cartItems: [Item]
+  createdAt: DateTime
   email: String!
   id: String!
   password: String!
-  updateAt: String
+  updateAt: DateTime
   username: String
 }

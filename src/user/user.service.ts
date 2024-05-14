@@ -21,11 +21,31 @@ export class UserService {
     return await this.prisma.user.findFirst({ where: { email } })
   }
   async findById(id: string) {
-    return await this.prisma.user.findFirst({ where: { id } })
+    return await this.prisma.user.findFirst({
+      where: { id },
+      include: { cartItems: { include: { post: true } } }
+    })
   }
   async logOut(id: string) {
-    await this.prisma.user.delete({ where: { id } })
-
+    await this.prisma.user.delete({ where: { id }, include: { cartItems: true } })
     return { message: 'You are log-out!!' }
+  }
+  async addInBasket(postId: string, userId: string) {
+    const cardItem = await this.prisma.cartItem.findFirst({ where: { userId, postId } })
+    if (cardItem) {
+      await this.prisma.cartItem.update({
+        where: { id: cardItem.id },
+        data: { quantity: cardItem.quantity += 1 },
+      })
+    } else {
+      await this.prisma.cartItem.create({
+        data: {
+          userId,
+          postId,
+          quantity: 1
+        },
+      })
+    }
+    return cardItem
   }
 }

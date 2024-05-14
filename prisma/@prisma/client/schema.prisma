@@ -17,27 +17,40 @@ model User {
   createdAt DateTime? @default(now()) @map("created_at")
   updatedAt DateTime? @updatedAt @map("updated_at")
 
+  cartItems CartItem[] 
+
   @@map("user")
 }
 
 model Post {
-  id               String    @id @default(uuid())
+  id               String   @id @default(uuid())
   title            String
   prices           Int[]
   colors           String[]
   memory           Int[]
   logos            String[]
   brand            String
-  screenSize       String    @map("screen_size")
-  CPU              String    @map("cpu")
-  MainCamera       String    @map("main_camera")
-  FrontCamera      String    @map("front_camera")
-  Battery          Int       @map("battery")
+  screenSize       String   @map("screen_size")
+  CPU              String   @map("cpu")
+  MainCamera       String   @map("main_camera")
+  FrontCamera      String   @map("front_camera")
+  Battery          Int      @map("battery")
   description      String
-  screenResolution String    @map("screen_resolution")
-  screenType       String    @map("screen_type")
-  pixelDebcity     String    @map("pixel_dencity")
-  
-  createdAt        DateTime? @default(now()) @map("created_at")
-  updatedAt        DateTime? @updatedAt @map("updated_at")
+  screenResolution String   @map("screen_resolution")
+  screenType       String   @map("screen_type")
+  pixelDebcity     String   @map("pixel_dencity")
+
+  cartItems CartItem[]
+
+  createdAt DateTime? @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
+}
+
+model CartItem {
+  id       String @id @default(cuid())
+  quantity Int    @default(0)
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId   String
+  post     Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId   String
 }

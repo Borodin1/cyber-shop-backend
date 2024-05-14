@@ -4,7 +4,7 @@ import { Post } from './dto/post';
 import { UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/auth/guards/jwt.auth.guard';
 import { PostInput } from './dto/post.input';
-import { Request } from 'express';
+
 
 @Resolver(() => Post)
 export class PostResolver {
