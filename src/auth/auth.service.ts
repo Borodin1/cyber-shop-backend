@@ -53,9 +53,6 @@ export class AuthService {
   async addTokenInCookie(res: Response, refreshToken: string) {
     res.cookie(this.TOKEN, refreshToken, {
       httpOnly: true,
-      secure: true,
-      sameSite: 'strict',
-      domain: 'localhost',
       maxAge: this.MAX_AGE,
     })
   }
